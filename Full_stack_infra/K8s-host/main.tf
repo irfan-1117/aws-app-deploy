@@ -1,5 +1,3 @@
-
-
 data "aws_ssm_parameter" "vpc_id" {
   name = "/${var.prefix}/base/vpc_id"
 }

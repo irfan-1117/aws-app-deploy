@@ -1,4 +1,4 @@
-/*data "aws_ssm_parameter" "vpc_id" {
+data "aws_ssm_parameter" "vpc_id" {
   name = "/${var.prefix}/base/vpc_id"
 }
 data "aws_ssm_parameter" "subnet" {
@@ -8,13 +8,13 @@ data "aws_ssm_parameter" "subnet" {
 locals {
   vpc_id    = data.aws_ssm_parameter.vpc_id.value
   subnet_id = data.aws_ssm_parameter.subnet.value
-}*/
+}
 
 resource "aws_security_group" "ansible_sg" {
   name        = "${var.prefix}-ansible_sg"
   description = "Security group for Kubernetes cluster"
 
-  #= local.vpc_id
+  vpc_id = local.vpc_id
 
   tags = {
     Name      = "SG for ansible"
@@ -85,7 +85,7 @@ resource "aws_instance" "ansible-host" {
 
   availability_zone = "${var.region}a"
 
-  #subnet_id = local.subnet_id
+  subnet_id = local.subnet_id
 
   vpc_security_group_ids = [
     "${aws_security_group.ansible_sg.id}",
