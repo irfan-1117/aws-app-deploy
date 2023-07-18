@@ -1,1 +1,0 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"ansible","Source":"./ansible-host","Dir":"ansible-host"},{"Key":"application","Source":"./application-host","Dir":"application-host"},{"Key":"kubernetes","Source":"./K8s-host","Dir":"K8s-host"}]}
