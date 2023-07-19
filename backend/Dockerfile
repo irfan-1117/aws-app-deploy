@@ -3,11 +3,12 @@ FROM golang:1.19
 # Set destination for COPY
 WORKDIR /app
 
+COPY . .
+
 # Download Go modules
-COPY cp ./go.mod go.sum ./
+RUN cp ./go.mod go.sum ./
 RUN go mod download
 
-COPY . .
 
 RUN go build -o main . 
 
