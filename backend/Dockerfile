@@ -1,14 +1,16 @@
-FROM golang:1.19.11
+FROM golang:1.19
 
+# Set destination for COPY
 WORKDIR /app
 
-COPY ./backend/go.mod go.sum ./
+# Download Go modules
+COPY go.mod go.sum ./
 RUN go mod download
 
 COPY . .
-#RUN go mod download
 
 RUN go build -o main . 
 
 CMD ["./main"]
+
 
