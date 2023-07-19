@@ -1,10 +1,5 @@
 FROM golang:1.19.11
 
-RUN mkdir /app
-
-COPY go.mod /app
-COPY go.sum /app
-
 WORKDIR /app
 
 COPY . .
