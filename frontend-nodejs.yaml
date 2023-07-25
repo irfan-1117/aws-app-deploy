@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-nodejs
+  labels:
+    app: frontend-nodejs
+spec:
+  replicas: 1  # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: frontend-nodejs
+  template:
+    metadata:
+      labels:
+        app: frontend-nodejs
+    spec:
+      containers:
+        - name: frontend-nodejs
+          image: naira/tech-v:nodejs-frontend # Replace with your actual frontend Docker image and tag
+          ports:
+            - containerPort: 3000  # Replace with the port your Node.js application listens 
+      
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  selector:
+    app: frontend-nodejs
+  ports:
+    - protocol: TCP
+      port: 80  # Expose your frontend on port 80
+      targetPort: 3000  # Match the containerPort of your frontend deployment
+  type: NodePort
