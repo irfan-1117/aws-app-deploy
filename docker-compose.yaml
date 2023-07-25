@@ -5,7 +5,7 @@ services:
     restart: always
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: docker
+      POSTGRES_PASSWORD: your password 
       POSTGRES_DB: mydatabase
     ports:
       - 5432:5432
@@ -22,7 +22,7 @@ services:
       DB_HOST: db
       DB_PORT: 5432
       DB_USER: postgres
-      DB_PASSWORD: docker
+      DB_PASSWORD: your password 
       DB_NAME: mydatabase
     command: go run main.go    
 
